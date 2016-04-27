@@ -1,0 +1,1 @@
+ bkoradbzs01.lacaixa.es : GNU/Linux : x86_64 : /opt/oracle/product/11.2.0.4/db_1 : t/oracle/ : CPIBM01T_1 : 11.2.0.4.0 :  11.2.0.3.6 : PSU 11.2.0.4.5 : TRUE : TRUE PRIMARY : PRIMARY

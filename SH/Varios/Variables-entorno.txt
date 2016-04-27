@@ -1,0 +1,49 @@
+#!/bin/bash
+
+###    NAME
+###      setenv_database.sh
+###
+###    DESCRIPTION
+###      Environment for the clusterware
+###
+###    RETURNS
+###
+###    NOTES
+###
+###    MODIFIED           (DD/MM/YY)
+###      oracle            10/01/2014     Adds alias altail
+###      oracle            11/06/2014     Oracle SID from CRSCTL
+
+V_HOST=`hostname | cut -d "." -f 1`
+V_DB_NAME=AUDAIDP
+V_ORACLE_BASE=/opt/oracle
+V_ORACLE_HOME=/opt/oracle/product/11.2.0.4/db_1
+V_SCRIPTS=/opt/oracle/admin/scripts
+V_DIAG=/opt/oracle/admin
+V_ADMIN_DIR=${V_SCRIPTS}"/database"
+V_DB_UNQ_NAME=AUDAIDP
+export ORACLE_BASE=${V_ORACLE_BASE}
+export ORACLE_HOME=${V_ORACLE_HOME}
+export ORACLE_TERM=xterm
+export PATH=${ORACLE_HOME}/bin:$PATH:.
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
+#V_SID=`srvctl status database -d ${V_DB_UNQ_NAME} | grep "is running" | grep -i ${V_HOST} | cut -d " " -f 2`
+V_SID=AUDAIDP1
+export ORACLE_SID=${V_SID}
+export DB_NAME=${V_DB_NAME}
+echo "Oracle Grid Infraestructure Clusterware 11.2"
+echo "####################################################################"
+echo "Host...................: ${V_HOST}"
+echo "----Environment details----"
+echo "ORACLE_BASE............: ${ORACLE_BASE}"
+echo "ORACLE_HOME............: ${ORACLE_HOME}"
+echo "ORACLE_SID.............: ${ORACLE_SID}"
+echo "---Additional Information--"
+echo "ORACLE_DB_NAME.........: ${DB_NAME}"
+echo "ORACLE_DB_UNIQUE_NAME..: ${V_DB_UNQ_NAME}"
+echo "ORACLE_DB_ADMIN_SCRIPTS: ${V_ADMIN_DIR}"
+echo "####################################################################"
+alias cdadmin="cd ${V_ADMIN_DIR}"
+alias cdhome="cd ${ORACLE_HOME}"
+alias sysdba='sqlplus / as sysdba'
+alias altail="tail -100f ${ORACLE_HOME}/log/${V_HOST}/alert${V_HOST}.log"

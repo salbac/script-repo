@@ -1,0 +1,25 @@
+CREATE USER test IDENTIFIED BY test
+       DEFAULT TABLESPACE USERS  
+       TEMPORARY TABLESPACE temp
+       QUOTA UNLIMITED ON users;
+	   
+grant connect to test;
+grant resource to test;
+revoke unlimitedany any tablespace to test;
+grant unlimited tavlespace to test;
+
+create table test (HOSTNAME varchar2(50),
+					OS varchar2(50),
+					OSARCHITECTURE varchar2(50),
+					ORACLE_HOME varchar2(50),
+					ORACLE_BASE varchar2(50),
+					DB varchar2(50),
+					DBVERSION varchar2(50),
+					OPATCHVERSION varchar2(50),
+					DBPSU varchar2(50),
+					RAC varchar2(50),
+					DATAGUARD varchar2(50),
+					DATAGUARDTYPE varchar2(50));
+					
+INSERT INTO test (HOSTNAME,OS,OSARCHITECTURE,ORACLE_HOME,ORACLE_BASE,DB,DBVERSION,OPATCHVERSION,DBPSU,RAC,DATAGUARD,DATAGUARDTYPE) VALUES ('bkoradbzs01.lacaixa.es','GNU/Linux,x86_64','/opt/oracle/product/11.2.0.4/db_1','/opt/oracle','CPIBM01T_1','11.2.0.4.0', '11.2.0.3.6','PSU 11.2.0.4.5','TRUE','TRUE
+PRIMARY','PRIMARY');
